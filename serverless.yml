@@ -28,14 +28,13 @@ functions:
           method: get
           async: True
 
-  functions:
-    exportImgF:
-      handler: exportImg.exportImgF
-      events:
-        - http:
-            path: forecast/exportImgF
-            method: get
-            async: True
+  exportImgF:
+    handler: exportImg.exportImgF
+    events:
+      - http:
+          path: forecast/exportImgF
+          method: get
+          async: True
 
 plugins:
   - serverless-python-requirements
