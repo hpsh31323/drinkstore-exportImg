@@ -1,0 +1,41 @@
+
+
+service: drinkstore-forecasting-exportImg
+
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: ap-southeast-1
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-log.json
+    - node_modules/**
+
+functions:
+  exportImgB:
+    handler: exportImg.exportImgB
+    events:
+      - http:
+          path: forecast/exportImgB
+          method: get
+          async: True
+
+  functions:
+    exportImgF:
+      handler: exportImg.exportImgF
+      events:
+        - http:
+            path: forecast/exportImgF
+            method: get
+            async: True
+
+plugins:
+  - serverless-python-requirements
